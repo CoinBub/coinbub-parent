@@ -4,7 +4,7 @@
     <groupId>tech.coinbub</groupId>
     <artifactId>coinbub-parent</artifactId>
     <version>1.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Coinbub :: Parent</name>
     <description>Parent POM for all CoinBub projects.</description>
@@ -100,77 +100,6 @@
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <!-- Sign our artifacts -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
-                        <executions>
-                            <execution>
-                                <id>sign-artifacts</id>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <!-- Sonatype Nexus releasing -->
-                    <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
-                        <extensions>true</extensions>
-                        <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-        <profile>
-            <id>release-parent</id>
-
-            <distributionManagement>
-                <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-                </snapshotRepository>
-                <repository>
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </repository>
-            </distributionManagement>
-
-            <build>
-                <plugins>
-                    <!-- Enforce dependency release versions -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <version>3.0.0-M1</version>
-                        <executions>
-                            <execution>
-                                <id>enforce-no-snapshots</id>
-                                <goals>
-                                    <goal>enforce</goal>
-                                </goals>
-                                <configuration>
-                                    <rules>
-                                        <requireReleaseDeps>
-                                            <message>No Snapshots Allowed!</message>
-                                        </requireReleaseDeps>
-                                    </rules>
-                                    <fail>true</fail>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
