@@ -4,7 +4,7 @@
     <groupId>tech.coinbub</groupId>
     <artifactId>coinbub-parent</artifactId>
     <version>1.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>Coinbub :: Parent</name>
     <description>Parent POM for all CoinBub projects.</description>
